@@ -125,5 +125,35 @@ namespace DoubleLinkedList_Tests
             //assert
             Assert.False(found);
         }
+
+        [Fact]
+        public void IsEmpty_ReturnsTrue()
+        {
+            //arrange
+            DoubleLinkedList<char> testList = new DoubleLinkedList<char>();
+
+            //act
+            bool testResult = testList.isEmpty();
+
+            //assert
+            Assert.True(testResult);
+        }
+
+        [Fact]
+        public void IsEmpty_ReturnsFalse()
+        {
+            //arrange
+            DoubleLinkedList<char> testList = new DoubleLinkedList<char>();
+            testList.addTail('T');
+            testList.addTail('E');
+            testList.addTail('S');
+            testList.addTail('T');
+
+            //act
+            bool testResult = testList.isEmpty();
+
+            //assert
+            Assert.False(testResult);
+        }
     }
 }
