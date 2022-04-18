@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace TextClassNamespace
 {
@@ -46,11 +44,11 @@ namespace TextClassNamespace
         {
             throw new NotImplementedException();
         }
-        public void Append(TextClass otherList)
+        public void Append(ref TextClass otherList)
         {
             throw new NotImplementedException();
         }
-        public void FindNext(char value)
+        public bool FindNext(char value)
         {
             throw new NotImplementedException();
         }

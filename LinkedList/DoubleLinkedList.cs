@@ -6,7 +6,7 @@ namespace TextClassNamespace
 {
     // From Jim Bailey: "Single Linked Lists", "Double Linked Lists", "Circular Linked Lists"
     //      Changes: templated, modified from C++/psuedocode to C#
-    class DoubleLinkedList <T>
+    public class DoubleLinkedList <T>
     {
         // a pointer to the start of the list
         private Link<T> head { get; set; }

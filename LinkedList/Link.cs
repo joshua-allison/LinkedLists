@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace TextClassNamespace
+﻿namespace TextClassNamespace
 {
     // From Jim Bailey: "Single Linked Lists", "Double Linked Lists", "Circular Linked Lists"
     //      Changes: templated, modified from C++/psuedocode to C#
