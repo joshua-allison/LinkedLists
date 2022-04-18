@@ -4,16 +4,16 @@ using System.Text;
 
 namespace TextClassNamespace
 {
-
     // From Jim Bailey: "Single Linked Lists", "Double Linked Lists", "Circular Linked Lists"
+    //      Changes: templated, modified from C++ to C#
     class Link <T>
     {
         //data stored in the link
-        private T value;
+        private T value { get; set; }
         //reference to next link in the list
-        private Link<T> next;
+        private Link<T> next { get; set; }
         //reference to prev link in the list
-        private Link<T> prev;
+        private Link<T> prev { get; set; }
 
         //constructor sets value and next
         public Link(T value, Link<T> next = null, Link<T> prev = null)
