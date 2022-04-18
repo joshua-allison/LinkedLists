@@ -5,8 +5,8 @@ using System.Text;
 namespace TextClassNamespace
 {
     // From Jim Bailey: "Single Linked Lists", "Double Linked Lists", "Circular Linked Lists"
-    //      Changes: templated, modified from C++ to C#
-    class Link <T>
+    //      Changes: templated, modified from C++/psuedocode to C#
+    class Link<T>
     {
         //data stored in the link
         private T value { get; set; }

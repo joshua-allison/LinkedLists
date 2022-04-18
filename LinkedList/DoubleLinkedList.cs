@@ -94,7 +94,24 @@ namespace TextClassNamespace
             // otherwise, update prev on new first link
             else
                 head.setPrev(null);
+        }
+        public void removeTail()
+        {
 
+            // if list is empty, throw an exception
+            if (tail == null)
+                throw new NullReferenceException();
+
+            // update tail
+            tail = tail.getPrev();
+
+            // if list is now empty, update head
+            if (tail == null)
+                head = null;
+
+            // otherwise, update next on new last
+            else
+                tail.setNext(null);
         }
 
         // return true if the list is empty
@@ -130,44 +147,50 @@ namespace TextClassNamespace
             if (isEmpty())
                 return false;
 
-            // next check head for value
-            if (head.getValue().Equals(value))
+            // walk down the list, looking for the value
+            // start at the head
+            Link<T> ptr = head;
+
+            // continue until we run out of links
+            while (ptr != null)
             {
-                removeHead();
-                return true;
-            }
-
-            // variable to track status of find
-            bool found = false;
-
-            // now walk down list, start by pointing at the head
-            Link<T> currentLink = head;
-             // until done with list or value is found
-            while (currentLink.getNext() != null && !found)
-            {
-                // create a reference to the next link
-                Link<T> nextLink = currentLink.getNext();
-
-                // if nextLink is the one wanted
-                if (nextLink.getValue().Equals(value))
+                // see if this link is what we want
+                if (ptr.getValue().Equals(value))
                 {
-                    // update list to look past it
-                    currentLink.setNext(nextLink.getNext());
+                    // special case head use existing code
+                    if (ptr == head)
+                    {
+                        removeHead();
+                        return true;
+                    }
 
-                    // added code to deal with deleting tail
-                    if (nextLink == tail)
-                        tail = currentLink;
+                    // special case tail use existing code
+                    if (ptr == tail)
+                    {
+                        removeTail();
+                        return true;
+                    }
 
-                    // set status as found
-                    found = true;
+                    // typical link, set prev and next to point around it
+                    ptr.getPrev().setNext(ptr.getNext());
+                    ptr.getNext().setPrev(ptr.getPrev());
+
+                    // and return
+                    return true;
                 }
-                // not there, move on down the line
+
+                // not there, keep looking
                 else
-                    currentLink = currentLink.getNext();
+                {
+                    ptr = ptr.getNext();
+                }
             }
-            // found or at end, return result
-            return found;
+
+            // done with list without finding it
+            return false;
         }
+
+        // returns a printable version of the linked list and the values that are stored in it
         public string showList()
         {
             string buffer;

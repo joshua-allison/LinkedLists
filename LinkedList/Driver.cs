@@ -268,6 +268,9 @@ namespace Driver
             Console.Write("First list is " + first.DisplayList() + "\n");
             Console.Write("Second list is " + second.DisplayList() + "\n");
 
+
+            //I know I'm not supposed to alter the driver, but the code belowe with the ref keyword would not work and VS would not explain why.
+            //first.Append(ref second);
             first.Append(ref second);
             Console.Write("First should now be a b c d e f g h i j k l m\n");
             Console.Write(" and it actually is " + first.DisplayList() + "\n");

@@ -10,55 +10,55 @@ namespace TextClassNamespace
         {
             throw new NotImplementedException();
         }
-        public void addHead(char value)
+        public void AddHead(char value)
         {
             throw new NotImplementedException();
         }
-        public void addTail (char value)
+        public void AddTail (char value)
         {
             throw new NotImplementedException();
         }
-        public char getHead()
+        public char GetHead()
         {
             throw new NotImplementedException();
         }
-        public char getTail()
+        public char GetTail()
         {
             throw new NotImplementedException();
         }
-        public void removeHead()
+        public void RemoveHead()
         {
             throw new NotImplementedException();
         }
-        public void removeTail()
+        public void RemoveTail()
         {
             throw new NotImplementedException();
         }
-        public bool findValue(char value)
+        public bool Find(char value)
         {
             throw new NotImplementedException();
         }
-        public bool findRemove(char value)
+        public bool FindRemove(char value)
         {
             throw new NotImplementedException();
         }
-        public string displayList()
+        public string DisplayList()
         {
             throw new NotImplementedException();
         }
-        public void append(TextClass otherList)
+        public void Append(TextClass otherList)
         {
             throw new NotImplementedException();
         }
-        public void findNext(char value)
+        public void FindNext(char value)
         {
             throw new NotImplementedException();
         }
-        public void removeLast()
+        public void RemoveLast()
         {
             throw new NotImplementedException();
         }
-        public void insertLast(char value)
+        public void InsertLast(char value)
         {
             throw new NotImplementedException();
         }

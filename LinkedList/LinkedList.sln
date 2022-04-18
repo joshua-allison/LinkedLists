@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31702.278
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LinkedList", "LinkedList.csproj", "{BE5BCEAD-CD6C-49A1-B005-03296DABFFB7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TextClassNamespace", "TextClassNamespace.csproj", "{BE5BCEAD-CD6C-49A1-B005-03296DABFFB7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DoubleLinkedList_Tests", "..\DoubleLinkedList_Tests\DoubleLinkedList_Tests.csproj", "{A04623A6-A88D-479E-8D13-88A8D77C8DDF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{BE5BCEAD-CD6C-49A1-B005-03296DABFFB7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BE5BCEAD-CD6C-49A1-B005-03296DABFFB7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BE5BCEAD-CD6C-49A1-B005-03296DABFFB7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A04623A6-A88D-479E-8D13-88A8D77C8DDF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A04623A6-A88D-479E-8D13-88A8D77C8DDF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A04623A6-A88D-479E-8D13-88A8D77C8DDF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A04623A6-A88D-479E-8D13-88A8D77C8DDF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
