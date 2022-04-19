@@ -11,6 +11,8 @@
         //reference to prev link in the list
         private Link<T> Prev { get; set; }
 
+
+
         //constructor sets value and next
         public Link(T value, Link<T> next = null, Link<T> prev = null)
         {
@@ -18,11 +20,20 @@
             Next = next;
             Prev = prev;
         }
-        // access methods
+
+        // accesses the value stored in the link
         public T GetValue() => Value;
+
+        // accesses the adjacent link in the direction of the tail
         public Link<T> GetNext() => Next;
+
+        // accesses the adjacent link in the direction of the head
         public Link<T> GetPrev() => Prev;
+
+        // mutates the pointer of the adjacent link in the direction of the tail to the link provided
         public void SetNext(Link<T> next) => Next = next;
+
+        // mutates the pointer of the adjacent link in the direction of the head to the link provided
         public void SetPrev(Link<T> prev) => Prev = prev;
     }
 }

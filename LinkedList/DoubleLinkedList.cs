@@ -8,11 +8,15 @@ namespace TextClassNamespace
     //      Changes: templated, modified from C++/psuedocode to C#
     public class DoubleLinkedList <T>
     {
-        // a pointer to the start of the list
+        // a pointer to the first link of the list
         private Link<T> Head { get; set; }
+
+        // a pointer to the last link of the list
         private Link<T> Tail { get; set; }
 
-        // the only class variable is the Head and it starts out as nullptr
+
+
+        // constructor initializes head and tail to null
         public DoubleLinkedList()
         {
             Head = null;
@@ -62,7 +66,7 @@ namespace TextClassNamespace
         {
             // if list is empty, throw an exception
             if (Head == null)
-                throw new NullReferenceException();
+                throw new InvalidOperationException();
 
             // return the value from inside Head
             return Head.GetValue();
@@ -73,7 +77,7 @@ namespace TextClassNamespace
         {
             // if list is empty, throw an exception
             if (Head == null)
-                throw new NullReferenceException();
+                throw new InvalidOperationException();
 
             // return the value from inside Head
             return Tail.GetValue();
@@ -84,7 +88,7 @@ namespace TextClassNamespace
         {
             // if list is empty, throw an exception
             if (Head == null)
-                throw new NullReferenceException();
+                throw new InvalidOperationException();
 
             // update Head to point at the next link in the list
             Head = Head.GetNext();
@@ -96,12 +100,14 @@ namespace TextClassNamespace
             else
                 Head.SetPrev(null);
         }
+
+        // remove the last link in the list
         public void RemoveTail()
         {
 
             // if list is empty, throw an exception
             if (Tail == null)
-                throw new NullReferenceException();
+                throw new InvalidOperationException();
 
             // update Tail
             Tail = Tail.GetPrev();
@@ -194,20 +200,18 @@ namespace TextClassNamespace
         // returns a printable version of the linked list and the values that are stored in it
         public string ShowList()
         {
-            string buffer;
+            // modified for expected output of TextClass.cs tests
+            string buffer = "";
             if (IsEmpty())
                 buffer = "Empty List";
             else
             {
-                buffer = "head -> ";
                 Link<T> ptr = Head;
                 while (ptr != null)
                 {
-                    buffer += ptr.GetValue().ToString();
+                    buffer += ptr.GetValue().ToString() + " ";
                     ptr = ptr.GetNext();
-                    buffer += " -> ";
                 }
-                buffer += "nullptr";
             }
             return buffer;
         }

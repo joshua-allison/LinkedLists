@@ -7,32 +7,32 @@ namespace Driver
     {
         static void Main(string[] args)
         {
-            // Uncomment test functions to run
+            //// Uncomment test functions to run
 
-            // basic tests
-            TestHead();
-            TestTail();
-            TestQueue();
+            //// basic tests
+            //TestHead();
+            //TestTail();
+            //TestQueue();
             TestDisplay();
-            TestFind();
-            TestFindRemove();
+            //TestFind();
+            //TestFindRemove();
 
-            // advanced tests
-            TestAppend();
-            TestFindNext();
-            TestRemoveLast();
-            TestInsertLast();
-            TestMixed();
+            //// advanced tests
+            //TestAppend();
+            //TestFindNext();
+            //TestRemoveLast();
+            //TestInsertLast();
+            //TestMixed();
 
-            // thinking test
-            TestThink();
+            //// thinking test
+            //TestThink();
 
 
             Console.Write("Press Enter to exit console");
             Console.Read();
         }
 
-        // basic tests
+        // basic tests     
         static void TestHead()
         {
             Console.Write("Testing adding and removing from Head\n\n");
