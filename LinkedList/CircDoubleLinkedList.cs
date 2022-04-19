@@ -4,9 +4,35 @@ using System.Text;
 
 namespace TextClassNamespace
 {
-    // From Jim Bailey: "Single Linked Lists", "Double Linked Lists", "Circular Linked Lists"
-    //      Changes: templated, modified from C++/psuedocode to C#
-    public class DoubleLinkedList <T>
+    /* From Jim Bailey: "Single Linked Lists", "Double Linked Lists", "Circular Linked Lists"
+    *      Changes: templated, modified from C++/psuedocode to C#
+    *               
+    *               This class is a hybrid between a double-endeed linked list and a circular linked list:
+    *               
+    *               Pros of a doubly linked list:
+    *               -   Definite beginning and end that maintains the order of the linked list.
+    *               -   Head and Tail can be accessed and mutated
+    *               -   Links can be accessed in both directions
+    *               Cons of a doubly linked list:
+    *               -   Cannot access/mutate links other than the head and tail
+    *               
+    *               Pros of a circular linked list:
+    *               -   Can access/mutate any links in the list.
+    *               Cons of a circular linked list:
+    *               -   Has no concept of a beginning or end
+    *               -       Cannot access/mutate head or tail links
+    *               
+    *               Hybrid Pros:
+    *               -   Hybrid should have a head/tail that can be accessed/mutated
+    *               -   Hybrid should have a 'current' link that 
+    *               -   Hybrid should be able to access/mutate the 'current' link
+    *               Hybrid Cons:
+    *               -   Does not have the same seamless simulated infinity of a circular linked list
+    *               
+    *               
+    *               
+    */
+    public class CircDoubleLinkedList <T>
     {
         // a pointer to the first link of the list
         private Link<T> Head { get; set; }
@@ -14,10 +40,13 @@ namespace TextClassNamespace
         // a pointer to the last link of the list
         private Link<T> Tail { get; set; }
 
+        // a pointer to the currently indexed link of the list
+        private Link<T> Current { get; set; }
+
 
 
         // constructor initializes head and tail to null
-        public DoubleLinkedList()
+        public CircDoubleLinkedList()
         {
             Head = null;
             Tail = null;
@@ -83,33 +112,6 @@ namespace TextClassNamespace
             return Tail.GetValue();
         }
 
-
-
-        ///*  The GetHeadLink and GetTailLink accessors were added to make the append function of TextClass possible. */
-
-        //// return the reference of the first link of the list
-        //public Link<T> GetHeadLink()
-        //{
-        //    // if list is empty, throw an exception
-        //    if (Head == null)
-        //        throw new InvalidOperationException();
-
-        //    // return the Head link
-        //    return Head;
-        //}
-
-        //// return the reference of the last link of the list
-        //public Link<T> GetTailLink()
-        //{
-        //    // if list is empty, throw an exception
-        //    if (Head == null)
-        //        throw new InvalidOperationException();
-
-        //    // return the value from inside Head
-        //    return Tail;
-        //}
-        
-        
         // remove the first link in the list
         public void RemoveHead()
         {
@@ -236,7 +238,7 @@ namespace TextClassNamespace
                 Link<T> ptr = Head;
                 while (ptr != null)
                 {
-                    buffer += ptr.GetValue().ToString() + " ";
+                    buffer += ptr.GetValue().ToString();
                     ptr = ptr.GetNext();
                 }
             }

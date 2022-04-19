@@ -18,14 +18,15 @@ namespace Driver
             //TestFindRemove();
 
             //// advanced tests
-            TestAppend();
+            //TestAppend();
+            
             //TestFindNext();
             //TestRemoveLast();
             //TestInsertLast();
             //TestMixed();
 
             //// thinking test
-            //TestThink();
+            TestThink();
 
 
             Console.Write("Press Enter to exit console");
@@ -401,12 +402,26 @@ namespace Driver
             char[] catLetters = new char[CAT] { 'T', 'h', 'i', 's', ' ', 'i', 's', ' ', 'a', ' ', 'c', 'a', 't' };
             char[] dogLetters = new char[DOG] { 'T', 'h', 'i', 's', ' ', 'i', 's', ' ', 'a', ' ', 'd', 'o', 'g' };
 
-            // create two TextClass objects, one with catLetters and one with dogLetters
-            // append the dogLetters list to the catLetters list and edit the result
-            // when done display the two lists
+            // create two TextClass objects,
+            // one with catLetters
+            TextClass LettersOfCat = new TextClass();
+            foreach (char letter in catLetters)
+                LettersOfCat.AddTail(letter);
+            // and one with dogLetters
+            TextClass LettersOfDog = new TextClass();
+            foreach (char letter in dogLetters)
+                LettersOfDog.AddTail(letter);
 
+            // append the dogLetters list to the catLetters list
+            LettersOfCat.Append(ref LettersOfDog);
+
+            // edit the result
+
+            // when done display the two lists
             Console.Write("Expected updated catList output: This is a cat and that is a dog\n");
+            Console.WriteLine("Actual updated catList output:" + LettersOfCat.DisplayList() + "\n");
             Console.Write("Expected dogList output: This is a dog\n");
+            Console.WriteLine("Expected dogList output:" + LettersOfDog.DisplayList() + "\n");
 
             Console.Write("Done testing thinking solution\n\n");
         }
