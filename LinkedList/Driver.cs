@@ -35,12 +35,12 @@ namespace Driver
         // basic tests
         static void TestHead()
         {
-            Console.Write("Testing adding and removing from head\n\n");
+            Console.Write("Testing adding and removing from Head\n\n");
             const int ADD_HEAD = 5;
             char[] heads = new char[ADD_HEAD] { 'a', 'b', 'c', 'd', 'e' };
 
             TextClass head = new TextClass();
-            Console.Write("Adding five letters to head of list\n");
+            Console.Write("Adding five letters to Head of list\n");
             for (int i = 0; i < ADD_HEAD; i++)
             {
                 head.AddHead(heads[i]);
@@ -70,7 +70,7 @@ namespace Driver
                 Console.Write("Caught something unexpected\n");
             }
 
-            Console.Write("Done testing adding and removing from head\n\n");
+            Console.Write("Done testing adding and removing from Head\n\n");
         }
 
         static void TestTail()
@@ -126,7 +126,7 @@ namespace Driver
             {
                 fifo1.AddTail(headFifo[i]);
             }
-            Console.Write(" removing from head and displaying them\n");
+            Console.Write(" removing from Head and displaying them\n");
             Console.Write(" expected A C E G I\n");
             Console.Write(" actually ");
             for (int i = 0; i < FIFO; i++)
@@ -137,7 +137,7 @@ namespace Driver
             Console.Write("\n\n");
 
             TextClass fifo2 = new TextClass();
-            Console.Write("Adding five letters to head of list\n");
+            Console.Write("Adding five letters to Head of list\n");
             for (int i = 0; i < FIFO; i++)
             {
                 fifo2.AddHead(tailFifo[i]);
@@ -168,7 +168,7 @@ namespace Driver
             {
                 display.AddTail(displays[i]);
             }
-            Console.Write(" displaying them head to tail\n");
+            Console.Write(" displaying them Head to tail\n");
             Console.Write(" expected s p r u c e\n");
             Console.Write(" actually " + display.DisplayList() + "\n\n");
 
@@ -195,7 +195,7 @@ namespace Driver
             Console.Write("  x " + (findTail.Find('x') ? "is" : "is not") + " there" + "\n\n");
 
             TextClass findHead = new TextClass();
-            Console.Write("Adding five vowels to head of a list\n");
+            Console.Write("Adding five vowels to Head of a list\n");
             for (int i = 0; i < FIND; i++)
             {
                 findHead.AddHead(vowels[i]);
@@ -233,7 +233,7 @@ namespace Driver
             Console.Write(" expected 1 5 7 9\n");
             Console.Write(" actually " + findRem.DisplayList() + "\n\n");
 
-            Console.Write("Now testing Find/remove head and tail\n");
+            Console.Write("Now testing Find/remove Head and tail\n");
             Console.Write("  1 " + (findRem.FindRemove('1') ? "is" : "is not") + " there\n");
             Console.Write("  9 " + (findRem.FindRemove('9') ? "is" : "is not") + " there\n");
             Console.Write(" displaying them after remove\n");

@@ -9,171 +9,173 @@ namespace TextClassNamespace
     public class DoubleLinkedList <T>
     {
         // a pointer to the start of the list
-        private Link<T> head { get; set; }
-        private Link<T> tail { get; set; }
+        private Link<T> Head { get; set; }
+        private Link<T> Tail { get; set; }
 
-        // the only class variable is the head and it starts out as nullptr
+        // the only class variable is the Head and it starts out as nullptr
         public DoubleLinkedList()
         {
-            head = null;
-            tail = null;
+            Head = null;
+            Tail = null;
         }
 
-        // add a new link containing value at the head of the list
-        public void addHead(T value)
+        // add a new link containing value at the Head of the list
+        public void AddHead(T value)
         {
             // create a new link containing the value
             Link<T> temp = new Link<T>(value);
 
             // if the list was empty
-            if (isEmpty())
-                // set tail to point to singleton link
-                tail = temp;
+            if (IsEmpty())
+                // set Tail to point to singleton link
+                Tail = temp;
             else
-                // update its next field to contain whatever head contained
-                temp.setNext(head);
+                // update its next field to contain whatever Head contained
+                temp.SetNext(Head);
 
-            // update head to point to the new link
-            head = temp;
+            Head.SetPrev(temp);
+
+            // update Head to point to the new link
+            Head = temp;
         }
 
-        // add a new link containing value at the tail of the list
-        public void addTail(T value)
+        // add a new link containing value at the Tail of the list
+        public void AddTail(T value)
         {
-            // if the list is empty, initialize both head and tail
-            if (tail == null)
-                head = tail = new Link<T>(value);
+            // if the list is empty, initialize both Head and Tail
+            if (Tail == null)
+                Head = Tail = new Link<T>(value);
 
-            // otherwise, just add a new link at the tail
+            // otherwise, just add a new link at the Tail
             else
             {
-                // create the new link with nullptr for next and tail for prev
-                Link<T> temp = new Link<T>(value, null, tail);
+                // create the new link with nullptr for next and Tail for prev
+                Link<T> temp = new Link<T>(value, null, Tail);
 
-                // set last link and tail to point to the new link
-                tail.setNext(temp);
-                tail = temp;
+                // set last link and Tail to point to the new link
+                Tail.SetNext(temp);
+                Tail = temp;
             }
         }
 
         // return the value contained in the first link of the list
-        public T getHead()
+        public T GetHead()
         {
             // if list is empty, throw an exception
-            if (head == null)
+            if (Head == null)
                 throw new NullReferenceException();
 
-            // return the value from inside head
-            return head.getValue();
+            // return the value from inside Head
+            return Head.GetValue();
         }
 
         // return the value contained in the last link of the list
-        public T getTail()
+        public T GetTail()
         {
             // if list is empty, throw an exception
-            if (head == null)
+            if (Head == null)
                 throw new NullReferenceException();
 
-            // return the value from inside head
-            return tail.getValue();
+            // return the value from inside Head
+            return Tail.GetValue();
         }
 
         // remove the first link in the list
-        public void removeHead()
+        public void RemoveHead()
         {
             // if list is empty, throw an exception
-            if (head == null)
+            if (Head == null)
                 throw new NullReferenceException();
 
-            // update head to point at the next link in the list
-            head = head.getNext();
+            // update Head to point at the next link in the list
+            Head = Head.GetNext();
 
-            // if now empty, set tail properly
-            if (isEmpty())
-                tail = null;
+            // if now empty, set Tail properly
+            if (IsEmpty())
+                Tail = null;
             // otherwise, update prev on new first link
             else
-                head.setPrev(null);
+                Head.SetPrev(null);
         }
-        public void removeTail()
+        public void RemoveTail()
         {
 
             // if list is empty, throw an exception
-            if (tail == null)
+            if (Tail == null)
                 throw new NullReferenceException();
 
-            // update tail
-            tail = tail.getPrev();
+            // update Tail
+            Tail = Tail.GetPrev();
 
-            // if list is now empty, update head
-            if (tail == null)
-                head = null;
+            // if list is now empty, update Head
+            if (Tail == null)
+                Head = null;
 
             // otherwise, update next on new last
             else
-                tail.setNext(null);
+                Tail.SetNext(null);
         }
 
         // return true if the list is empty
-        public bool isEmpty() => head == null;
+        public bool IsEmpty() => Head == null;
 
         // Iterative version for a linear search
-        public bool findValue(T value)
+        public bool FindValue(T value)
         {
             // variable to track status of find
             bool found = false;
 
-            // start at the head
-            Link<T> currentLink = head;
+            // start at the Head
+            Link<T> currentLink = Head;
 
             // continue until the end
             while (currentLink != null && !found){
                 // found it, go home happy (modified for templated links)
-                if (currentLink.getValue().Equals(value))
+                if (currentLink.GetValue().Equals(value))
                     found = true;
 
                 // not found, continue with next link
                 else
-                    currentLink = currentLink.getNext();
+                    currentLink = currentLink.GetNext();
             }
             // end of list or found, return
             return found;
         }
 
         // find and remove a value if present
-        public bool findRemove(T value)
+        public bool FindRemove(T value)
         {
             // special case empty list
-            if (isEmpty())
+            if (IsEmpty())
                 return false;
 
             // walk down the list, looking for the value
-            // start at the head
-            Link<T> ptr = head;
+            // start at the Head
+            Link<T> ptr = Head;
 
             // continue until we run out of links
             while (ptr != null)
             {
                 // see if this link is what we want
-                if (ptr.getValue().Equals(value))
+                if (ptr.GetValue().Equals(value))
                 {
-                    // special case head use existing code
-                    if (ptr == head)
+                    // special case Head use existing code
+                    if (ptr == Head)
                     {
-                        removeHead();
+                        RemoveHead();
                         return true;
                     }
 
-                    // special case tail use existing code
-                    if (ptr == tail)
+                    // special case Tail use existing code
+                    if (ptr == Tail)
                     {
-                        removeTail();
+                        RemoveTail();
                         return true;
                     }
 
                     // typical link, set prev and next to point around it
-                    ptr.getPrev().setNext(ptr.getNext());
-                    ptr.getNext().setPrev(ptr.getPrev());
+                    ptr.GetPrev().SetNext(ptr.GetNext());
+                    ptr.GetNext().SetPrev(ptr.GetPrev());
 
                     // and return
                     return true;
@@ -182,7 +184,7 @@ namespace TextClassNamespace
                 // not there, keep looking
                 else
                 {
-                    ptr = ptr.getNext();
+                    ptr = ptr.GetNext();
                 }
             }
 
@@ -191,19 +193,19 @@ namespace TextClassNamespace
         }
 
         // returns a printable version of the linked list and the values that are stored in it
-        public string showList()
+        public string ShowList()
         {
             string buffer;
-            if (isEmpty())
+            if (IsEmpty())
                 buffer = "Empty List";
             else
             {
                 buffer = "head -> ";
-                Link<T> ptr = head;
+                Link<T> ptr = Head;
                 while (ptr != null)
                 {
-                    buffer += ptr.getValue().ToString();
-                    ptr = ptr.getNext();
+                    buffer += ptr.GetValue().ToString();
+                    ptr = ptr.GetNext();
                     buffer += " -> ";
                 }
                 buffer += "nullptr";
