@@ -83,6 +83,33 @@ namespace TextClassNamespace
             return Tail.GetValue();
         }
 
+
+
+        ///*  The GetHeadLink and GetTailLink accessors were added to make the append function of TextClass possible. */
+
+        //// return the reference of the first link of the list
+        //public Link<T> GetHeadLink()
+        //{
+        //    // if list is empty, throw an exception
+        //    if (Head == null)
+        //        throw new InvalidOperationException();
+
+        //    // return the Head link
+        //    return Head;
+        //}
+
+        //// return the reference of the last link of the list
+        //public Link<T> GetTailLink()
+        //{
+        //    // if list is empty, throw an exception
+        //    if (Head == null)
+        //        throw new InvalidOperationException();
+
+        //    // return the value from inside Head
+        //    return Tail;
+        //}
+        
+        
         // remove the first link in the list
         public void RemoveHead()
         {

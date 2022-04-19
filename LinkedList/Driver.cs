@@ -13,12 +13,12 @@ namespace Driver
             //TestHead();
             //TestTail();
             //TestQueue();
-            TestDisplay();
+            //TestDisplay();
             //TestFind();
             //TestFindRemove();
 
             //// advanced tests
-            //TestAppend();
+            TestAppend();
             //TestFindNext();
             //TestRemoveLast();
             //TestInsertLast();
