@@ -22,21 +22,20 @@ namespace TextClassNamespace
         // add a new link containing value at the Head of the list
         public void AddHead(T value)
         {
-            // create a new link containing the value
-            Link<T> temp = new Link<T>(value);
-
-            // if the list was empty
+            // if the list is empty, initialize both head and tail
             if (IsEmpty())
-                // set Tail to point to singleton link
-                Tail = temp;
+                Head = Tail = new Link<T>(value);
+            
+            // otherwise, just add a new link at the head
             else
-                // update its next field to contain whatever Head contained
-                temp.SetNext(Head);
+            {
+                // create new link with nullptr for prev and head for next
+                Link<T> temp = new Link<T>(value, Head, null);
 
-            Head.SetPrev(temp);
-
-            // update Head to point to the new link
-            Head = temp;
+                // set first link and head to point to the new link
+                Head.SetPrev(temp);
+                Head = temp;
+            }
         }
 
         // add a new link containing value at the Tail of the list

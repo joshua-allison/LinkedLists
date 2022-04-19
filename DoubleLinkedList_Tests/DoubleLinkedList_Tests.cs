@@ -39,6 +39,7 @@ namespace DoubleLinkedList_Tests
             string correctResult = "TEST";
 
             //act
+            testList.RemoveHead();
             string testResult = testList.GetHead();
 
             //assert
