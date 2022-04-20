@@ -6,7 +6,7 @@ namespace DoubleLinkedList_Tests
 {
     public class DoubleLinkedList_Tests
     {
-        private readonly string CorrectShowList = "head -> T -> E -> S -> T -> nullptr";
+        private readonly string CorrectShowList = "TEST";
         private readonly char testChar = '\\';
 
         [Fact]

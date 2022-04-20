@@ -4,35 +4,10 @@ using System.Text;
 
 namespace TextClassNamespace
 {
-    /* From Jim Bailey: "Single Linked Lists", "Double Linked Lists", "Circular Linked Lists"
-    *      Changes: templated, modified from C++/psuedocode to C#
-    *               
-    *               This class is a hybrid between a double-endeed linked list and a circular linked list:
-    *               
-    *               Pros of a doubly linked list:
-    *               -   Definite beginning and end that maintains the order of the linked list.
-    *               -   Head and Tail can be accessed and mutated
-    *               -   Links can be accessed in both directions
-    *               Cons of a doubly linked list:
-    *               -   Cannot access/mutate links other than the head and tail
-    *               
-    *               Pros of a circular linked list:
-    *               -   Can access/mutate any links in the list.
-    *               Cons of a circular linked list:
-    *               -   Has no concept of a beginning or end
-    *               -       Cannot access/mutate head or tail links
-    *               
-    *               Hybrid Pros:
-    *               -   Hybrid should have a head/tail that can be accessed/mutated
-    *               -   Hybrid should have a 'current' link that 
-    *               -   Hybrid should be able to access/mutate the 'current' link
-    *               Hybrid Cons:
-    *               -   Does not have the same seamless simulated infinity of a circular linked list
-    *               
-    *               
-    *               
-    */
-    public class CircDoubleLinkedList <T>
+    //From Jim Bailey: "Single Linked Lists", "Double Linked Lists", "Circular Linked Lists"
+    //      Changes: templated, modified from C++/psuedocode to C#
+                   
+    public class DoubleLinkedList <T>
     {
         // a pointer to the first link of the list
         private Link<T> Head { get; set; }
@@ -40,13 +15,11 @@ namespace TextClassNamespace
         // a pointer to the last link of the list
         private Link<T> Tail { get; set; }
 
-        // a pointer to the currently indexed link of the list
-        private Link<T> Current { get; set; }
 
 
 
         // constructor initializes head and tail to null
-        public CircDoubleLinkedList()
+        public DoubleLinkedList()
         {
             Head = null;
             Tail = null;
