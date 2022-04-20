@@ -18,13 +18,13 @@ namespace DoubleLinkedList_Tests
 
             //act
             testList.AddHead('T');
-            testResult += testList.GetHead();
+            testResult += testList.GetHeadValue();
             testList.AddHead('E');
-            testResult += testList.GetHead();
+            testResult += testList.GetHeadValue();
             testList.AddHead('S');
-            testResult += testList.GetHead();
+            testResult += testList.GetHeadValue();
             testList.AddHead('T');
-            testResult += testList.GetHead();
+            testResult += testList.GetHeadValue();
 
             //assert
             Assert.Equal(correctResult, testResult);
@@ -40,7 +40,7 @@ namespace DoubleLinkedList_Tests
 
             //act
             testList.RemoveHead();
-            string testResult = testList.GetHead();
+            string testResult = testList.GetHeadValue();
 
             //assert
             Assert.Equal(correctResult, testResult);
@@ -55,13 +55,13 @@ namespace DoubleLinkedList_Tests
 
             //act
             testList.AddTail('T');
-            testResult += testList.GetTail();
+            testResult += testList.GetTailValue();
             testList.AddTail('E');
-            testResult += testList.GetTail();
+            testResult += testList.GetTailValue();
             testList.AddTail('S');
-            testResult += testList.GetTail();
+            testResult += testList.GetTailValue();
             testList.AddTail('T');
-            testResult += testList.GetTail();
+            testResult += testList.GetTailValue();
 
             //assert
             Assert.Equal(correctResult, testResult);

@@ -9,6 +9,8 @@ namespace TextClassNamespace
                    
     public class DoubleLinkedList <T>
     {
+        /**     BEGIN BASIC SPECIFICATION   **/
+
         // a pointer to the first link of the list
         private Link<T> Head { get; set; }
 
@@ -16,14 +18,18 @@ namespace TextClassNamespace
         private Link<T> Tail { get; set; }
 
 
-
-
         // constructor initializes head and tail to null
         public DoubleLinkedList()
         {
             Head = null;
             Tail = null;
+
+            //for the advanced specification
+            Current = null;
         }
+
+        // return true if the list is empty
+        public bool IsEmpty() => Head == null;
 
         // add a new link containing value at the Head of the list
         public void AddHead(T value)
@@ -48,7 +54,7 @@ namespace TextClassNamespace
         public void AddTail(T value)
         {
             // if the list is empty, initialize both Head and Tail
-            if (Tail == null)
+            if (IsEmpty())
                 Head = Tail = new Link<T>(value);
 
             // otherwise, just add a new link at the Tail
@@ -64,10 +70,10 @@ namespace TextClassNamespace
         }
 
         // return the value contained in the first link of the list
-        public T GetHead()
+        public T GetHeadValue()
         {
             // if list is empty, throw an exception
-            if (Head == null)
+            if (IsEmpty())
                 throw new InvalidOperationException();
 
             // return the value from inside Head
@@ -75,10 +81,10 @@ namespace TextClassNamespace
         }
 
         // return the value contained in the last link of the list
-        public T GetTail()
+        public T GetTailValue()
         {
             // if list is empty, throw an exception
-            if (Head == null)
+            if (IsEmpty())
                 throw new InvalidOperationException();
 
             // return the value from inside Head
@@ -89,7 +95,7 @@ namespace TextClassNamespace
         public void RemoveHead()
         {
             // if list is empty, throw an exception
-            if (Head == null)
+            if (IsEmpty())
                 throw new InvalidOperationException();
 
             // update Head to point at the next link in the list
@@ -108,7 +114,7 @@ namespace TextClassNamespace
         {
 
             // if list is empty, throw an exception
-            if (Tail == null)
+            if (IsEmpty())
                 throw new InvalidOperationException();
 
             // update Tail
@@ -122,9 +128,6 @@ namespace TextClassNamespace
             else
                 Tail.SetNext(null);
         }
-
-        // return true if the list is empty
-        public bool IsEmpty() => Head == null;
 
         // Iterative version for a linear search
         public bool FindValue(T value)
@@ -217,5 +220,44 @@ namespace TextClassNamespace
             }
             return buffer;
         }
+        /**     END BASIC SPECIFICATION     **/
+
+
+        /**     BEGIN ADVANCED SPECIFICATION
+        **      I could have made a circular-double-ended-linked-list from the start and changed a lot of the code above.
+        **      But I wrote the code above to pass the basic specification tests.
+        **      The methods below allow me to address the advanced specification with as little change to the above code as possible.
+        **      Some of the methods below mimic some of the features of a circular linked list.
+        **/
+
+        // a pointer to the current link being tracked
+        private Link<T> Current { get; set;}
+
+
+        // return the first link of the list
+        public Link<T> GetHeadLink() => Head;
+
+        // return the last link of the list
+        public Link<T> GetTailLink() => Tail;
+
+        // return the current link being tracked
+        public Link<T> GetCurrentLink()
+        {
+            // Set the Current link to the head, if this function hasn't already been called
+            if (Current == null)
+                Current = Head;
+
+            return Current;
+        }
+
+        // switch the currently tracked link to it's adjacent link, in the direction of the tail
+        public void IncrementCurrent()
+        {
+            if (Current == null || Current == Tail)
+                Current = Head;
+            else
+                Current = Current.GetNext();
+        }
+        /**END ADVANCED SPECIFICATION**/
     }
 }

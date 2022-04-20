@@ -38,13 +38,13 @@ namespace TextClassNamespace
         // returns the value in the link at the head of the LinkedList member
         public char GetHead()
         {
-            return LinkedList.GetHead();
+            return LinkedList.GetHeadValue();
         }
 
         // returns the value in the link at the tail of the LinkedList member
         public char GetTail()
         {
-            return LinkedList.GetTail();
+            return LinkedList.GetTailValue();
         }
 
         // removes the link at the head of the LinkedList member, resulting in a new head link if the list is not empty as a result
