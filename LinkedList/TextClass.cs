@@ -10,12 +10,10 @@ namespace TextClassNamespace
 
     class TextClass
     {
-        // BEGIN: BASIC SPECIFICATION
+        /**     BEGIN BASIC SPECIFICATION     **/
 
-        // the linked list that TextClass uses for it's operations
-        private DoubleLinkedList<char> LinkedList { get; set; }
-
-
+        // the linked list that TextClass uses for it's operations (changed from private to public for advanced specification)
+        public DoubleLinkedList<char> LinkedList { get; set; }
 
         // constructor initializes 'LinkedList' member
         public TextClass()
@@ -76,51 +74,67 @@ namespace TextClassNamespace
         {
             return LinkedList.ShowList();
         }
-        // END: BASIC SPECIFICATION
+        /**     END BASIC SPECIFICATION     **/
 
 
-        // BEGIN: ADVANCED SPECIFICATION
+        /**     BEGIN ADVANCED SPECIFICATION     **/
 
         // append the contents of otherList to the tail of this list
         public void Append(ref TextClass otherList)
         {
-            bool isOtherListEmpty = false;
-            //while head of otherlist != null
-            while(isOtherListEmpty == false)
+            Link<char> otherListTail = otherList.LinkedList.GetTailLink();
+            do
             {
-                try
-                {
-                    // get the value of the head of otherList, and add that value as a tail to this list
-                    LinkedList.AddTail(otherList.GetHead());
-                    // then remove the head of the other list so that it is not re-copied
-                    otherList.RemoveHead();
-                    
-                }
-                catch
-                {
-                    isOtherListEmpty = true;
-                }
+                if (otherList.LinkedList.GetCurrentLink() == null)
+                    otherList.LinkedList.IncrementCurrent();
+                Link<char> currentLink = otherList.LinkedList.GetCurrentLink();
+                LinkedList.AddTail(currentLink.GetValue());
+                otherList.LinkedList.IncrementCurrent();
+            } while (otherList.LinkedList.GetCurrentLink().GetNext() != null);
+            LinkedList.AddTail(otherList.LinkedList.GetTailValue());
+        }
+
+        // find the next instance of the passed in value
+        public bool FindNext(char value)
+        {
+            Link<char> startingLink = LinkedList.GetCurrentLink();
+            do
+            {
+                LinkedList.IncrementCurrent();
+                if (LinkedList.GetCurrentLink().GetValue() == value)
+                    return true;
+            } while (LinkedList.GetCurrentLink() != startingLink);
+            return false;
+        }
+
+        // removes the link that was saved by the last call to findNext
+        public void RemoveLast()
+        {
+            if (LinkedList.GetCurrentLink() != null)
+            {
+                LinkedList.GetCurrentLink().GetPrev().SetNext(LinkedList.GetCurrentLink().GetNext());
+                LinkedList.GetCurrentLink().GetNext().SetPrev(LinkedList.GetCurrentLink().GetPrev());
+                LinkedList.ResetCurrent();
             }
         }
 
-        //
-        public bool FindNext(char value)
-        {
-            throw new NotImplementedException();
-        }
-
-        //
-        public void RemoveLast()
-        {
-            throw new NotImplementedException();
-        }
-
-        //
+        // insert value before the link that was saved by the most recent call to findNext
         public void InsertLast(char value)
         {
-            throw new NotImplementedException();
+            if (LinkedList.GetCurrentLink() == LinkedList.GetHeadLink())
+            {
+                LinkedList.AddHead(value);
+            }
+            else
+            {
+                Link<char> insert = new Link<char>(value);
+                insert.SetNext(LinkedList.GetCurrentLink());
+                insert.SetPrev(LinkedList.GetCurrentLink().GetPrev());
+                LinkedList.GetCurrentLink().GetPrev().SetNext(insert);
+                LinkedList.GetCurrentLink().SetPrev(insert);
+            }
         }
-        // END: ADVANCED SPECIFICATION
+        /**     END ADVANCED SPECIFICATION     **/
 
 
 

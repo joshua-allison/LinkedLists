@@ -9,21 +9,20 @@ namespace Driver
         {
             //// Uncomment test functions to run
 
-            //// basic tests
-            //TestHead();
-            //TestTail();
-            //TestQueue();
-            //TestDisplay();
-            //TestFind();
-            //TestFindRemove();
+            // basic tests
+            TestHead();
+            TestTail();
+            TestQueue();
+            TestDisplay();
+            TestFind();
+            TestFindRemove();
 
-            //// advanced tests
-            //TestAppend();
-            
-            //TestFindNext();
-            //TestRemoveLast();
-            //TestInsertLast();
-            //TestMixed();
+            // advanced tests
+            TestAppend();
+            TestFindNext();
+            TestRemoveLast();
+            TestInsertLast();
+            TestMixed();
 
             //// thinking test
             TestThink();
@@ -416,12 +415,32 @@ namespace Driver
             LettersOfCat.Append(ref LettersOfDog);
 
             // edit the result
+            LettersOfCat.FindNext('T');
+            LettersOfCat.FindNext('T');
+            LettersOfCat.InsertLast(' ');
+            LettersOfCat.InsertLast('a');
+            LettersOfCat.InsertLast('n');
+            LettersOfCat.InsertLast('d');
+            LettersOfCat.InsertLast(' ');
+            LettersOfCat.InsertLast('t');
+            LettersOfCat.RemoveLast();
+            LettersOfCat.FindNext('i');
+            LettersOfCat.FindNext('i');
+            LettersOfCat.FindNext('i');
+            LettersOfCat.InsertLast('a');
+            LettersOfCat.InsertLast('t');
+            LettersOfCat.RemoveLast();
+            LettersOfCat.FindNext('s');
+            LettersOfCat.FindNext('s');
+            LettersOfCat.FindNext('s');
+            LettersOfCat.RemoveLast();
+
 
             // when done display the two lists
             Console.Write("Expected updated catList output: This is a cat and that is a dog\n");
-            Console.WriteLine("Actual updated catList output:" + LettersOfCat.DisplayList() + "\n");
+            Console.WriteLine("Actual updated catList output: " + LettersOfCat.DisplayList() + "\n");
             Console.Write("Expected dogList output: This is a dog\n");
-            Console.WriteLine("Expected dogList output:" + LettersOfDog.DisplayList() + "\n");
+            Console.WriteLine("Actual dogList output: " + LettersOfDog.DisplayList() + "\n");
 
             Console.Write("Done testing thinking solution\n\n");
         }

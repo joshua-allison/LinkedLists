@@ -241,14 +241,14 @@ namespace TextClassNamespace
         public Link<T> GetTailLink() => Tail;
 
         // return the current link being tracked
-        public Link<T> GetCurrentLink()
-        {
-            // Set the Current link to the head, if this function hasn't already been called
-            if (Current == null)
-                Current = Head;
+        public Link<T> GetCurrentLink() => Current;
 
-            return Current;
-        }
+        // set the current link back to it's empty state.
+        public void ResetCurrent()
+        {
+            // then nullify current
+            Current = null;
+        } 
 
         // switch the currently tracked link to it's adjacent link, in the direction of the tail
         public void IncrementCurrent()
